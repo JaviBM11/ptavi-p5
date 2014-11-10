@@ -103,7 +103,7 @@ no sabemos la dependencia
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
  ** ¿Cuánto dura la conversación? 20.889 s
- ** ¿Cuáles son sus SSRC? h261: 43306582 y g711a: BF4AFD37 ¿Por qué hay varios SSRCs? Para audio y video ¿Hay CSRCs? No hay
+ ** ¿Cuáles son sus SSRC? h261: 43306582 y g711a: BF4AFD37¿Por qué hay varios SSRCs? Para audio y video ¿Hay CSRCs? No hay
 
 
 15. Identifica la trama donde se finaliza la conversación.
