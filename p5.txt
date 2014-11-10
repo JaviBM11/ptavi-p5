@@ -76,10 +76,10 @@ Si
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos? RTP(audio y video) y DNS.
- ** ¿Cuál es el tamaño de paquete de los mismos? En DNS el tamaño es variable y en RTP 214 bytes
+ ** ¿Cuál es el tamaño de paquete de los mismos? En DNS el tamaño es variable, en RTP audio 214 bytes y en RTP video son variables.
  ** ¿Se utilizan bits de padding? No
- ** ¿Cuál es la periodicidad de los paquetes que se envían? 0,024281
- ** ¿Cuántos bits/segundo estamos enviando? 70507,8 bits/s
+ ** ¿Cuál es la periodicidad de los paquetes que se envían? 0,160s
+ ** ¿Cuántos bits/segundo estamos enviando? 10700 bits/s
 
 
 
