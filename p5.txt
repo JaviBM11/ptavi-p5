@@ -86,36 +86,36 @@ Si
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
- ** ¿Cuántos flujos hay? ¿por qué?
- ** ¿Cuántos paquetes se pierden?
- ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
- ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+ ** ¿Cuántos flujos hay? ¿por qué? 2, uno de video y otro de audio
+ ** ¿Cuántos paquetes se pierden? 0
+ ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta? 1290,44 y 1290,48, es el retardo
+ ** ¿Cuáles son los valores de jitter (medio y máximo)? puerto 5014: Medio: 153,24 y Maximo: 183,10 y puerto 5010: Medio: 42,50 y Maximo 119,64¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad? No porque hay mucha diferencias de retardo.
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
- ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
- ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
- ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
- ** ¿A qué se debe el cambio tan brusco del jitter?
- ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
+ ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado? 0 y 0.
+ ** ¿Podemos saber si éste es el primer paquete que nos han enviado? No porque no tenemos forma de saber si es el primero o si se ha perdido antes alguno.
+ ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál? 246
+ ** ¿A qué se debe el cambio tan brusco del jitter? al cambio de retardo tan brusco
+ ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? si ¿Por qué? porque el jitter depende del retardo.
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
-
+no sabemos la dependencia
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
- ** ¿Cuánto dura la conversación?
- ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+ ** ¿Cuánto dura la conversación? 20.889 s
+ ** ¿Cuáles son sus SSRC? h261: 43306582 y g711a: BF4AFD37 ¿Por qué hay varios SSRCs? Para audio y video ¿Hay CSRCs? No hay
 
 
 15. Identifica la trama donde se finaliza la conversación.
- ** ¿Qué método SIP se utiliza?
- ** ¿En qué trama(s)?
- ** ¿Por qué crees que se envía varias veces?
+ ** ¿Qué método SIP se utiliza? BYE
+ ** ¿En qué trama(s)? 924,925,927,933
+ ** ¿Por qué crees que se envía varias veces? porque no recibe el 200 ok
 
 
 16. Finalmente, se cierra la aplicación de VozIP.
- ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
- ** ¿En qué trama sucede esto?
- ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+ ** ¿Por qué aparece una instrucción SIP del tipo REGISTER? Para irse con un expires a 0
+ ** ¿En qué trama sucede esto? 950
+ ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)? Expires a 0
 
 
 
@@ -129,16 +129,16 @@ Captura de una sesión SIP
 Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.net. Tendrás que dar de alta una cuenta en www.ekiga.net con el navegador. Recuerda también que has de comenzar a capturar tramas antes de arrancar Ekiga para ver todo el proceso en el que participa SIP. Para realizar los siguientes ejercicios, deberás crearte una cuenta en ekiga.net y darte de alta la lanzar la aplicación.
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
- ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
- ** ¿Son diferentes el registro y la descripción de la sesión?
+ ** ¿Es necesario el uso de DNS y STUN? ¿Por qué? No, porque no esta detras de un router nat
+ ** ¿Son diferentes el registro y la descripción de la sesión? No
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
- ** ¿Cuántos flujos tenemos?
- ** ¿Cuál es su periodicidad?
- ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
- ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
- ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+ ** ¿Cuántos flujos tenemos? 2
+ ** ¿Cuál es su periodicidad?  0.160 s
+ ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter? 31,47 y 30,53. Valores maximo: 6.50 y 6.44 y medio: 4.83 y 4.79
+ ** ¿Podrías reproducir la conversación desde Wireshark? si ¿Cómo? VoIP y despues dandole a player. Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
+ ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net? musica
 
 
 
